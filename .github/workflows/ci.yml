@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - run: make test
+      - run: python3 -I -m unittest discover -s tests
       - name: demo (the faulty summary must fail, the good one must pass)
         run: |
           python3 -I citecheck/verify_citations.py examples/summary-good.md examples/book.txt

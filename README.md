@@ -9,8 +9,8 @@ Le dépôt est né d'une chaîne d'agents qui écrit des fiches de lecture : les
 ## Lancer
 
 ```bash
-make test    # 16 tests
-make demo    # le même résumé, juste (code 0), puis avec quatre fautes (code 1)
+python3 -I -m unittest discover -s tests    # 16 tests
+./demo.sh    # le même résumé, juste (code 0), puis avec quatre fautes (code 1)
 ```
 
 ```bash
@@ -57,8 +57,8 @@ Three small stdlib-only Python scripts that mechanically check a book summary wr
 It started as part of an agent pipeline that writes reading notes. Human-style reviewers kept finding quotes that were slightly reworded or pinned to the wrong page. A script catches them for free, before a reviewer pays tokens for it.
 
 ```bash
-make test    # 16 tests
-make demo    # same summary: correct (exit 0), then with four faults (exit 1)
+python3 -I -m unittest discover -s tests    # 16 tests
+./demo.sh    # same summary: correct (exit 0), then with four faults (exit 1)
 ```
 
 - `verify_citations.py summary.md book.txt` — quotes, numbers and references (`(lesson 3)`, `(p. 112)`, `(ch. 2)`); `ECHEC` if a quote is not in the cited unit, `MAUVAISE-UNITE` if it exists elsewhere.
