@@ -20,7 +20,7 @@ et laissées au relecteur, avec leur renvoi vérifié. Pour qu'une citation trad
 brouillon FR met l'original juste après le renvoi : « … » (leçon 71) <!--VO: "exact English" -->.
 Le commentaire est vérifié comme une citation anglaise ; md2php.py le retire de la page.
 
-Texte source : « =====[N] titre » sépare les leçons (extraits ExpertEdge) ; sinon les sauts de
+Texte source : « =====[N] titre » sépare les leçons (extraits d'un lecteur en ligne) ; sinon les sauts de
 page \\f séparent les pages d'un PDF (--offset décale : page PDF = page du livre + offset).
 Code retour : 0 si aucune ECHEC, 1 sinon, 2 si usage faux.
 Sans dépendance : bibliothèque standard seulement. La normalisation vient de check_claim.py.
