@@ -1,0 +1,18 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: make test
+      - name: demo (the faulty summary must fail, the good one must pass)
+        run: |
+          python3 -I citecheck/verify_citations.py examples/summary-good.md examples/book.txt
+          if python3 -I citecheck/verify_citations.py examples/summary-bad.md examples/book.txt; then echo "the faulty summary passed"; exit 1; fi

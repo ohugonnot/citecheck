@@ -1,0 +1,9 @@
+=====[1] Why caches work
+Caches work because programs repeat themselves. A loop reads the same array a thousand times, and a web page asks for the same logo on every visit. In practice, hit rates are "95 to 97 percent" for well-behaved code, so only one access in twenty reaches the slow memory.
+The cost of a miss is what makes the average interesting. A hit takes about 4 cycles. A miss to main memory takes about 200 cycles, fifty times more.
+=====[2] Writing to a cache
+A write-through cache sends every write to memory at once. It is simple, and it is slow. A write-back cache keeps the new value and marks the line as dirty; the line is written out only when it is evicted.
+The author insists that "dirty lines are a debt, not a gift". A crash with dirty lines in the cache loses data that the program believed saved. This is why databases add a log in front of the cache.
+=====[3] Invalidation
+There are only two hard things in computer science, goes the old joke: cache invalidation and naming things. The book takes the joke seriously. A cache that is never invalidated serves stale answers, and a cache that is invalidated too eagerly serves none.
+The simplest policy is a time to live. An entry expires after 60 seconds whatever happens. It wastes some hits and it never serves an answer older than a minute.
