@@ -36,11 +36,11 @@ Format du livre : `=====[N] titre` sépare les chapitres ou leçons ; sinon un s
 | Une citation altérée, un mauvais renvoi, une unité inexistante font échouer le script | Vérifié | `tests/test_e2e.py::test_bad_summary_fails_on_each_fault` |
 | Le résumé juste passe | Vérifié | `tests/test_e2e.py::test_good_summary_passes` |
 | Les tests rougissent si on casse la comparaison de citations | Vérifié | cinq tests passent au rouge quand `present()` répond toujours « oui » (essai du 03/11/2026, non automatisé) |
-| Les tests rougissent si on casse les variantes de forme | Vérifié | `test_suffix_and_hyphen_variants_are_found` passe au rouge quand les suffixes sont retirés (même essai) |
+| Les tests rougissent si on casse les variantes de forme | Vérifié | `test_suffix_and_hyphen_variants_are_found` passe au rouge quand la tolérance aux suffixes des mots est retirée, ainsi que `test_absence_claims` selon la mutation (même essai) |
 | Une absence prouvée sur le texte entier prouve l'absence de l'IDÉE | **Faux, non prétendu** | le script prouve l'absence d'un MOT et de ses variantes de forme, pas des synonymes : à compléter à la main |
 | Une citation française sans original `<!--VO-->` est vérifiée | **Non vérifié par texte** | seul son renvoi l'est, le reste va au relecteur |
 | Les chiffres écrits en lettres (« vingt ») sont retrouvés | Non vérifié | seuls les chiffres arabes le sont |
-| La CI GitHub Actions passe | Non vérifié à l'écriture | le dépôt n'avait pas encore été poussé ; testé en local sur Python 3.10 seulement |
+| La CI GitHub Actions passe | Vérifié | exécution 41663560664 (03/11/2026) : tests et démo verts sur Python 3.9, 3.10 et 3.12 ; seuls les systèmes Linux (ubuntu) ont été essayés |
 
 Les extraits de `examples/book.txt` sont un texte inventé pour le dépôt, pas un livre publié.
 
@@ -65,6 +65,6 @@ python3 -I -m unittest discover -s tests    # 16 tests
 - `prove_absence.py book.txt "term|variant"` — proves a term is absent from the whole text, with form variants; exit code 1 if it is present.
 - `check_claim.py` — the shared normalizer.
 
-The program's messages are in French. Source format: `=====[N] title` separates chapters or lessons, otherwise a form feed (`\f`) separates PDF pages. The proof register above says what is verified and what is not; the CI had not run when this was written. `examples/book.txt` is invented text.
+The program's messages are in French. Source format: `=====[N] title` separates chapters or lessons, otherwise a form feed (`\f`) separates PDF pages. The proof register above says what is verified and what is not; the CI (GitHub Actions, Python 3.9, 3.10 and 3.12 on Ubuntu) passed on 3 November 2026. `examples/book.txt` is invented text.
 
 MIT license.
